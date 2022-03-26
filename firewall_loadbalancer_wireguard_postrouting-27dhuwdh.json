@@ -43,7 +43,7 @@
 			        {"HTTP": ""},
 				{"EXEC": "/ready.sh"}
 				],
-                        "ENV_FILES": [ "/etc/user/config/wireguard-proxy.json" ],
+                        "ENV_FILES": [ "/etc/system/config/proxy.json" ],
 			"EXTRA": "--privileged",
 			"DEPEND": "null",
 			"START_ON_BOOT": "false",
