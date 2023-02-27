@@ -1,0 +1,12 @@
+[Interface]
+Address = 
+PrivateKey = 
+DNS = 1.1.1.1
+PreUp = /etc/wireguard/set_gateway.sh
+
+[Peer]
+PublicKey = 
+PresharedKey = 
+AllowedIPs = 0.0.0.0/0
+Endpoint =
+PersistentKeepalive = 15
