@@ -1,6 +1,0 @@
-{
-	},
-	"firewall_loadbalancer_wireguard_prerouting": {
-		"SOURCE_IP": "10.0.1.1"
-        }
-}

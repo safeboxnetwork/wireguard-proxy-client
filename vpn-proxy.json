@@ -3,22 +3,13 @@
 		"SERVICE_NAME": "wireguard-client",
 		"DOMAIN": "null" 
 	},
-	"networks": [
-		{
-			"NAME": "wireguard-proxy-client",
-			"DRIVER": "bridge",
-			"SUBNET": "172.16.0.0/24",	
-			"RANGE": "172.16.0.0/24",
-			"GATEWAY": "172.16.0.1"
-		}
-	],
 	"containers": [
 		{ 
-			"IMAGE": "registry.format.hu/wireguard-server",
-			"NAME": "wireguard_proxy_client-edeg3e98",
+			"IMAGE": "registry.format.hu/wireguard-client",
+			"UPDATE": "true",
+			"NAME": "wireguardproxy-client",
 			"MEMORY": "64M",
-			"IP": "172.16.0.2",
-			"NETWORK": "wireguard-proxy-client",
+			"SELECTOR": "proxyvpnclient",
 			"VOLUMES": [
                                 {   
                                 "SOURCE": "/etc/user/secret/wireguard-client/wg0.conf",
@@ -38,7 +29,11 @@
                         "START_ON_BOOT": "true",
                         "CMD": "null",			
 			"PRE_START": "null",
-			"POST_START": [ "firewall_loadbalancer_wireguard_prerouting-27dhuwdh", "firewall_loadbalancer_wireguard_postrouting-27dhuwdh" ]
+			"POST_START": [ "firewall-vpn-smarthost-loadbalancer",
+					"firewall-vpn-proxy-postrouting",
+					"firewall-vpn-proxy-prerouting"
+					]
 		}
 	]
 }
+

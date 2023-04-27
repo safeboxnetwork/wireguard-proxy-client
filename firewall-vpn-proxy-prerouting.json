@@ -1,0 +1,74 @@
+{
+	"main": {
+		"SERVICE_NAME": "firewalls",
+		"DOMAIN": "null" 
+	},
+	"containers": [
+		{ 
+			"IMAGE": "registry.format.hu/firewall",
+			"UPDATE": "true",
+			"NAME": "wireguardfirewall",
+			"SCALE": "0",
+			"MEMORY": "64M",
+			"NETWORK": "host",
+			"VOLUMES": [
+				{
+				"SOURCE": "/proc/",
+				"DEST": "/proc/",
+				"TYPE": "rw"
+				},
+				{
+				"SOURCE": "/run/",
+				"DEST": "/run/",
+				"TYPE": "rw"
+				},
+				{
+				"SOURCE": "/etc/user/config/services",
+				"DEST": "/services",
+				"TYPE": "ro"
+				},
+				{
+                                 "SOURCE": "/var/run/docker.sock",
+                                 "DEST": "/var/run/docker.sock",
+                                 "TYPE": "rw"
+                                 },
+                                 {
+                                 "SOURCE": "/usr/bin/docker",
+                                 "DEST": "/usr/bin/docker",
+                                 "TYPE": "ro"
+                                 },
+        			 {     
+        			"SOURCE": "/etc/system/data/dns/hosts.local",
+        			"DEST": "/etc/dns/hosts.local", 
+        			"TYPE": "ro"
+        			 }
+				],
+			"PORTS": [ ],
+			"READYNESS": [
+			        {"tcp": ""},
+			        {"HTTP": ""},
+				{"EXEC": "/ready.sh"}
+				],
+                        "ENVS": [
+				{ "NSENTER": "true" },
+                                { "PREROUTING": "true" },
+				{ "SOURCE_IFACE": "wg0" },
+                                { "TARGET": "smarthostloadbalancer" },
+				{ "NAME": "NAME", "VALUE": "wireguardproxy" },
+				{ "TYPE": "tcp" },
+                                { "SOURCE_PORT_1": "80" },
+                                { "SOURCE_PORT_2": "443" },
+                                { "TARGET_PORT_1": "80" },
+                                { "TARGET_PORT_2": "443" },
+                                { "COMMENT": "client" }
+                                ], 
+			"ENV_FILES": [ "/etc/user/config/user.json" ],
+			"EXTRA": "--privileged --rm",
+			"DEPEND": "null",
+			"START_ON_BOOT": "false",
+			"CMD": "null",
+			"PRE_START": "null",
+			"POST_START": "null"
+		}
+	]
+}
