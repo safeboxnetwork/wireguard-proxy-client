@@ -12,7 +12,7 @@
 			"SELECTOR": "proxyvpnclient",
 			"VOLUMES": [
                                 {   
-                                "SOURCE": "/etc/user/secret/wireguard-client/wg0.conf",
+                                "SOURCE": "/etc/user/secret/vpn-proxy/wg0.conf",
                                 "DEST": "/etc/wireguard/wg0.conf",
                                 "TYPE": "ro"
                                 } 
