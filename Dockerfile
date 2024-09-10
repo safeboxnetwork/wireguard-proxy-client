@@ -1,10 +1,10 @@
 FROM alpine:latest
 
 RUN apk add --no-cache alpine-sdk rustup \
- && rustup-init -y --target x86_64-unknown-linux-musl --default-toolchain beta --profile minimal \
+ && rustup-init -y --default-toolchain beta --profile minimal \
  #&& curl https://sh.rustup.rs -sSf | sh -s -- -y  --default-host x86_64-unknown-linux-musl --profile minimal \
  && source ~/.cargo/env \
- && cargo install --target x86_64-unknown-linux-musl boringtun-cli
+ && cargo install boringtun-cli
 
 FROM alpine:latest
 
