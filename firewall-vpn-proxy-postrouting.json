@@ -32,11 +32,6 @@
                                  "DEST": "/var/run/docker.sock",
                                  "TYPE": "rw"
                                  },
-                                 {
-                                 "SOURCE": "/usr/bin/docker",
-                                 "DEST": "/usr/bin/docker",
-                                 "TYPE": "ro"
-                                 },
         			 {     
         			"SOURCE": "/etc/system/data/dns/hosts.local",
         			"DEST": "/etc/dns/hosts.local", 
