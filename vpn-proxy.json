@@ -24,7 +24,7 @@
 				{"EXEC": "/ready.sh"}
 				],
                         "ENVS":  "null",
-                        "EXTRA": "--privileged --cap-add=NET_ADMIN --device=/dev/net/tun --cap-add MKNOD --cap-add NET_RAW",
+                        "EXTRA": "--restart unless-stopped --privileged --cap-add=NET_ADMIN --device=/dev/net/tun --cap-add MKNOD --cap-add NET_RAW",
                         "DEPEND": "null",
                         "START_ON_BOOT": "true",
                         "CMD": "null",			
