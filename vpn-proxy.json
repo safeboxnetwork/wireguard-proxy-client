@@ -1,39 +1,45 @@
 {
-	"main": {
-		"SERVICE_NAME": "wireguard-client",
-		"DOMAIN": "null" 
-	},
-	"containers": [
-		{ 
-			"IMAGE": "registry.format.hu/wireguard-proxy-client",
-			"UPDATE": "true",
-			"NAME": "wireguardproxy-client",
-			"MEMORY": "64M",
-			"SELECTOR": "proxyvpnclient",
-			"VOLUMES": [
-                                {   
-                                "SOURCE": "/etc/user/secret/vpn-proxy/wg0.conf",
-                                "DEST": "/etc/wireguard/wg0.conf",
-                                "TYPE": "ro"
-                                } 
-				],
-			"PORTS": [ ],
-			"READYNESS": [
-			        {"tcp": ""},
-			        {"HTTP": ""},
-				{"EXEC": "/ready.sh"}
-				],
-                        "ENVS":  "null",
-                        "EXTRA": "--restart unless-stopped --privileged --cap-add=NET_ADMIN --device=/dev/net/tun --cap-add MKNOD --cap-add NET_RAW",
-                        "DEPEND": "null",
-                        "START_ON_BOOT": "true",
-                        "CMD": "null",			
-			"PRE_START": "null",
-			"POST_START": [ "firewall-vpn-smarthost-loadbalancer",
-					"firewall-vpn-proxy-postrouting",
-					"firewall-vpn-proxy-prerouting"
-					]
-		}
-	]
+    "main": {
+        "SERVICE_NAME": "wireguard-client",
+        "DOMAIN": "null"
+    },
+    "containers": [
+        {
+            "IMAGE": "registry.format.hu/wireguard-proxy-client",
+            "UPDATE": "true",
+            "NAME": "wireguardproxy-client",
+            "MEMORY": "64M",
+            "SELECTOR": "wireguardproxy",
+            "VOLUMES": [
+                {
+                    "SOURCE": "/etc/user/secret/vpn-proxy/wg0.conf",
+                    "DEST": "/etc/wireguard/wg0.conf",
+                    "TYPE": "ro"
+                }
+            ],
+            "PORTS": [],
+            "READYNESS": [
+                {
+                    "tcp": ""
+                },
+                {
+                    "HTTP": ""
+                },
+                {
+                    "EXEC": "/ready.sh"
+                }
+            ],
+            "ENVS": "null",
+            "EXTRA": "--restart unless-stopped --privileged --cap-add=NET_ADMIN --device=/dev/net/tun --cap-add MKNOD --cap-add NET_RAW",
+            "DEPEND": "null",
+            "START_ON_BOOT": "true",
+            "CMD": "null",
+            "PRE_START": "null",
+            "POST_START": [
+                "firewall-vpn-smarthost-loadbalancer",
+                "firewall-vpn-proxy-postrouting",
+                "firewall-vpn-proxy-prerouting"
+            ]
+        }
+    ]
 }
-
