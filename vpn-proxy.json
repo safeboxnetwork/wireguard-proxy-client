@@ -5,7 +5,7 @@
 	},
 	"containers": [
 		{ 
-			"IMAGE": "registry.format.hu/wireguard-client",
+			"IMAGE": "registry.format.hu/wireguard-proxy-client",
 			"UPDATE": "true",
 			"NAME": "wireguardproxy-client",
 			"MEMORY": "64M",
