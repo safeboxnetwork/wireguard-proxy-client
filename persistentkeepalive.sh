@@ -29,7 +29,7 @@ while true; do
     echo "WireGuard keepalive ping failed ($fail_count/$MAX_FAILURES) to $WG_SERVER_IP via $IFACE"
     if [ "$fail_count" -ge "$MAX_FAILURES" ]; then
       echo "WireGuard connection is stuck after $MAX_FAILURES consecutive failures ... forcing container restart..."
-      exec kill -9 1
+      exec killall boringtun
     fi
   fi
   sleep "$PING_INTERVAL"
