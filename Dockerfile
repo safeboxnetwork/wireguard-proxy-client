@@ -12,7 +12,7 @@ COPY --from=0 /root/.cargo/bin/boringtun-cli /usr/bin/boringtun
 
 # replace the commented line with the following after service-exec go update
 #RUN apk add --no-cache tini wireguard-tools \
-RUN apk add --no-cache tini wireguard-tools iptables-legacy \
+RUN apk add --no-cache tini wireguard-tools iptables-legacy iptables \
  && apk add --no-cache --virtual .build-deps libcap \
  && setcap cap_net_admin+ep /usr/bin/boringtun \
  && apk del --purge .build-deps \
