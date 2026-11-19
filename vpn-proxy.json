@@ -5,7 +5,7 @@
     },
     "containers": [
         {
-            "IMAGE": "safebox/wireguard-proxy-client",
+            "IMAGE": "safebox/wireguard-client",
             "UPDATE": "true",
             "NAME": "wireguardproxy-client",
             "MEMORY": "64M",
